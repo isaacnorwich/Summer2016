@@ -5,6 +5,9 @@ Created on Tue Jun  7 11:22:33 2016
 @author: Econ12
 """
 
+##THIS IS A TESTTTTTTTTT
+
+
 import os
 
 os.path.abspath('mydir/myfile.txt')
@@ -23,16 +26,19 @@ for file in file_names:
     
         for i in range(len(listreadfile)):          
             first_split = listreadfile[i].split()
-            print(first_split)
-            break
 
-        
             try:
                 if first_split[0].isdigit():
                 #checks the first string of the row for a number
                     print(first_split[0])
                     
-                    
+                 
+recordlist = listreadfile[i].replace("," , "").split()
+fullrecords[counter] = recordlist[:4]
+#fullrecords has full records		
+                 
+                 
+          ##TEST TEST       
 #                    recordlist = listreadfile[i].split(',')
 #                    
 #                    #testrecordlist = [y for x in recordlist for y in x.split()]                    
