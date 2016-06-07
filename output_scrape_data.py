@@ -27,11 +27,16 @@ for file in file_names:
             try:
                 if first_split[0].isdigit():
                 #checks the first string of the row for a number
+                    recordlist= []
+                    templist = listreadfile[i].split(',')
                     
-                    recordlist = listreadfile[i].split(',')
                     
-                 
+                    recordlist.append(templist[0].split()[0].strip())
+                    recordlist.append(templist[0].split()[1].strip())
 
+                    recordlist.append(templist[1].strip())
+                    recordlist.append(templist[2].strip())                                                      
+                    
                     fullrecords[counter] = recordlist[:4]
                     
                     counter += 1
@@ -39,16 +44,13 @@ for file in file_names:
             except:
                continue
             
-
+        readfile.close()
 
             
 with open(OUTFILENAME, 'a') as outfile:
     for i in range(1,len(fullrecords)+1):
         record = '\t'.join(fullrecords[i])
-
- 
-        outfile.write(record + str(i) + '\n')###
-        break
+        outfile.write(str(i) + '\t' + record + '\n')
+       
         
-        #record = '\t'.join([record_id, zip, city, county, state])
-        #        outfile.write(record + '\n') 
+outfile.close()
