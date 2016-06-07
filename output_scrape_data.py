@@ -4,11 +4,6 @@ Created on Tue Jun  7 11:22:33 2016
 
 @author: Econ12
 """
-
-##THIS IS A TESTTTTTTTTT
-
-#Wy doesn't this show upppp?
-
 import os
 
 os.path.abspath('mydir/myfile.txt')
