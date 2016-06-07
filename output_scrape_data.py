@@ -8,9 +8,10 @@ import os
 
 os.path.abspath('mydir/myfile.txt')
 
-path = 'C:/Users/econ12/Documents/Ancestry_Scraping'
-
+path = 'C:/Users/econ12/Documents/Ancestry_Scraping/TestFiles/'
 file_names = os.listdir(path)
+for x in range(2): file_names[x] = path + file_names[x]
+
 OUTFILENAME = 'records.txt'
 
 counter = 1
@@ -26,28 +27,28 @@ for file in file_names:
             try:
                 if first_split[0].isdigit():
                 #checks the first string of the row for a number
-                    print(first_split[0])
+                    
+                    recordlist = listreadfile[i].split(',')
                     
                  
-recordlist = listreadfile[i].replace("," , "").split()
-fullrecords[counter] = recordlist[:4]
-#fullrecords has full records		
-                 
-                 
-          ##TEST TEST       
-#                    recordlist = listreadfile[i].split(',')
-#                    
-#                    #testrecordlist = [y for x in recordlist for y in x.split()]                    
-#
-#                    fullrecords[counter] = testrecordlist[:4]
-#                    #fullrecords has full records
-#                    counter += 1
+
+                    fullrecords[counter] = recordlist[:4]
+                    
+                    counter += 1
+            
             except:
-                continue
-#            
-#            
-#with open(OUTFILENAME, 'a') as outfile:
-#    for i in range(1,len(fullrecords)+1):
-#        record = '\t'.join(fullrecords[i]).join(str(i))
-#        
-#        outfile.write(record + '\n')###
+               continue
+            
+
+
+            
+with open(OUTFILENAME, 'a') as outfile:
+    for i in range(1,len(fullrecords)+1):
+        record = '\t'.join(fullrecords[i])
+
+ 
+        outfile.write(record + str(i) + '\n')###
+        break
+        
+        #record = '\t'.join([record_id, zip, city, county, state])
+        #        outfile.write(record + '\n') 
