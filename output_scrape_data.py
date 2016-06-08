@@ -3,6 +3,8 @@
 This code takes the scraped death information from ancestry.com and parses
 the relevant information from the output files. It outputs a file that is a
 tab delimited format of the death information.
+
+Note: This code is written in Python 3.5
 """
 
 # Import Libraries
@@ -13,7 +15,7 @@ os.path.abspath('mydir/myfile.txt')
 path = 'C:/Users/econ12/Documents/Ancestry_Scraping/TestFiles/'
 file_names = [f for f in os.listdir(path) if f.endswith('.res')]
 for x in range(len(file_names)): file_names[x] = path + file_names[x]
-OUTFILENAME = path + 'records.txt'
+OUTFILENAME = path + 'records.csv'
 
 # Initial Setup
 counter = 1
@@ -46,9 +48,8 @@ for file in file_names:
             except:
                continue
 
-# Writes one tab delimited text file with the relevant data
-with open(OUTFILENAME, 'w+') as outfile:
-    outfile.truncate()    
+# Writes one tab delimited text file with the relevant data from fullrecords
+with open(OUTFILENAME, 'w+') as outfile:    
     for i in range(1,len(fullrecords)+1):
-        record1 = '\t'.join(fullrecords[i])
-        outfile.write(str(i) + '\t' + record1 + '\n')  
+        record1 = ','.join(fullrecords[i])
+        outfile.write(str(i) + ',' + record1 + '\n')  
