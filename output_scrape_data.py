@@ -19,17 +19,19 @@ OUTFILENAME = path + 'records.txt'
 counter = 1
 fullrecords = {}
 
+
 # For each file, this loop collects the data in a dictionary
 for file in file_names:
     with open(file, 'r') as readfile:
+        #Turns every line into a new entry in a list        
         listreadfile = list(readfile)
     
         for i in range(len(listreadfile)):          
             first_split = listreadfile[i].split()
             # Sometimes the string is empty and throws an error            
             try:
+                #checks the first string of the row for a number    
                 if first_split[0].isdigit():
-                #checks the first string of the row for a number
                     recordlist = []
                     recordlist = listreadfile[i].split(',')
                     recordlist = [x.strip() for x in recordlist]
@@ -40,7 +42,6 @@ for file in file_names:
                     recordlist.insert(1, templist[1])
 
                     fullrecords[counter] = recordlist[:4]
-
                     counter += 1           
             except:
                continue
@@ -50,6 +51,4 @@ with open(OUTFILENAME, 'w+') as outfile:
     outfile.truncate()    
     for i in range(1,len(fullrecords)+1):
         record1 = '\t'.join(fullrecords[i])
-        outfile.write(str(i) + '\t' + record1 + '\n')
-        
-    outfile.close()
+        outfile.write(str(i) + '\t' + record1 + '\n')  
